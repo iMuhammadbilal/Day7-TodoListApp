@@ -14,11 +14,17 @@ themeToggle.addEventListener('click', toggleTheme);
 
 // Add Task
 function addTask() {
-    const taskText = taskInput.value.trim();
-    if (taskText === '') return;
+    const taskText = taskInput.value.trim(); // take the value of the input and remove any whitespace
+    console.log(taskText);
     
-    const taskItem = document.createElement('li');
-    taskItem.innerHTML = `
+    if (taskText === '') return; // if the input is empty, return
+    
+    const taskItem = document.createElement('li'); // create a new list item
+    console.log(taskItem);
+    
+
+    // add the task text and buttons to the list item
+    taskItem.innerHTML = `  
     <span class="task-text">${taskText}</span>
     <div class="task-buttons">
     <button class="complete-btn">✔</button>
@@ -26,25 +32,27 @@ function addTask() {
     <button class="delete-btn">❌</button>
     </div>
     `;
-    taskList.appendChild(taskItem);
-    taskInput.value = '';
+    taskList.appendChild(taskItem);  // add the list item to the task list
+    taskInput.value = ''; // clear the input field
 }
 
 
 // Handle Task Actions (Complete, Edit, Delete)
 function handleTaskAction(event) {
-    const target = event.target;
-    const taskItem = target.closest('li');
+    const target = event.target;  // get the element that was clicked
+    console.log(target);
+    const taskItem = target.closest('li'); // find the closest list item
+    console.log(taskItem);
 
-    if (target.classList.contains('complete-btn')) {
-        taskItem.classList.toggle('completed');
-        taskItem.querySelector('.task-text').style.textDecoration = taskItem.classList.contains('completed') ? 'line-through' : 'none';
-    } else if (target.classList.contains('edit-btn')) {
-        const newText = prompt('Edit Task:', taskItem.querySelector('.task-text').textContent);
-        if (newText) taskItem.querySelector('.task-text').textContent = newText;
-    } else if (target.classList.contains('delete-btn')) {
-        alert('Are you sure you want to delete this task?');
-        taskItem.remove();
+    if (target.classList.contains('complete-btn')) { // check if the element has the complete-btn class
+        taskItem.classList.toggle('completed'); // toggle the completed class on the list item
+        taskItem.querySelector('.task-text').style.textDecoration = taskItem.classList.contains('completed') ? 'line-through' : 'none'; // add or remove line-through style
+    } else if (target.classList.contains('edit-btn')) { // check if the element has the edit-btn class
+        const newText = prompt('Edit Task:', taskItem.querySelector('.task-text').textContent); // prompt the user for new text
+        if (newText) taskItem.querySelector('.task-text').textContent = newText; // if the user entered text, update the task text
+    } else if (target.classList.contains('delete-btn')) { // check if the element has the delete-btn class
+        alert('Are you sure you want to delete this task?'); // confirm the delete action
+        taskItem.remove(); // remove the list item from the task list
     }   
 }
 
@@ -52,16 +60,16 @@ function handleTaskAction(event) {
 
 // Filter Tasks
 function filterTaskList() {
-    const filterValue = filterTasks.value;
-    const tasks = taskList.querySelectorAll('li');
+    const filterValue = filterTasks.value; // get the value of the filter select element
+    const tasks = taskList.querySelectorAll('li'); // get all the list items
 
-    tasks.forEach(task => {
-        if (filterValue === 'all') {
-            task.style.display = 'flex';
-        } else if (filterValue === 'completed') {
-            task.style.display = task.classList.contains('completed') ? 'flex' : 'none';
-        } else if (filterValue === 'pending') {
-            task.style.display = !task.classList.contains('completed') ? 'flex' : 'none';
+    tasks.forEach(task => { // loop through each list item
+        if (filterValue === 'all') { // check the filter value
+            task.style.display = 'flex'; // show the list item
+        } else if (filterValue === 'completed') { // check the filter value
+            task.style.display = task.classList.contains('completed') ? 'flex' : 'none'; // show the list item if it has the completed class
+        } else if (filterValue === 'pending') { // check the filter value 
+            task.style.display = !task.classList.contains('completed') ? 'flex' : 'none'; // show the list item if it does not have the completed class
         }
     });
 }
