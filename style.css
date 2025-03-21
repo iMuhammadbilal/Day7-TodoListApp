@@ -1,0 +1,113 @@
+/* General Styling */
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #352c3e, #2575fc);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+/* Container */
+.container {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 50px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(18, 8, 8, 0.527);
+    width: 500px;
+    color: white;
+}
+
+/* Title */
+.title {
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+/* Input Section */
+.input-section {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+
+}
+
+input {
+    flex: 1;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    font-size: 20px;
+}
+
+button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+/* Task List */
+#taskList {
+    list-style: none;
+    padding: 0;
+    margin-top: 15px;
+}
+
+#taskList li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    color: white;
+    font-size: 20px;
+}
+
+/* Buttons */
+.task-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.complete-btn {
+    background-color: green;
+    color: white;
+}
+
+.edit-btn {
+    background-color: orange;
+    color: white;
+}
+
+.delete-btn {
+    background-color: rgb(223, 168, 168);
+    color: white;
+}
+
+/* Theme Toggle */
+.dark-mode {
+    background: linear-gradient(135deg, #232526, #414345);
+}
+
+.dark-mode .container {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+#filterTasks {
+    padding: 5px 7px;
+    font-size: 20px;
+}
+
+#themeToggle {
+    padding: 10px 18px;
+    margin-bottom: 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
